@@ -6,12 +6,13 @@ namespace Prep1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("This is prep 1");
+            Console.Write("What is your first name? ");
+            string first = Console.ReadLine();
 
-            string first = "What is your first name? ";
-            string last = "What is your last name? ";
+            Console.Write("What is your last name? ");
+            string last = Console.ReadLine();
 
-            Console.WriteLine($"Your name is {last}, {first} {last}.");
+            Console.WriteLine($"{last}, {first} {last}.");
         }
     }
 }
