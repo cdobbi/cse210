@@ -15,7 +15,7 @@ namespace Prep4
 
             while (number_entered != 0)
             {
-                Console.Write("Enter number entered: ");
+                Console.Write("Enter number: ");
                 number_entered = int.Parse(Console.ReadLine());
                 if (number_entered != 0)
                 {
@@ -32,7 +32,7 @@ namespace Prep4
 
             int counted = numbers.Count;
             double average = (double)sum / counted;
-            Console.WriteLine($"The average is {average:.2f}");
+            Console.WriteLine($"The average is {average}");
 
             int largest_number = int.MinValue;
             foreach (int number in numbers)
