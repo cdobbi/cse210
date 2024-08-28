@@ -9,7 +9,6 @@ class Program
         Console.WriteLine("Welcome to Guess My Number!");
         Console.WriteLine("I'm thinking of a number between 1 and 20.");
         Console.WriteLine("");
-        
         Random randomGenerator = new Random();
         int magicNumber = randomGenerator.Next(1, 20);
         int guess = -1;
