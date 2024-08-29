@@ -24,47 +24,44 @@ class Program
             }
         }
 
-            int sum = 0;
+        int sum = 0;
         foreach (int number in numbers)
         {
             sum += number;
         }
-        Console.WriteLine($"The Sum is {sum}.");
-                if (numbers.Count > 0)
-                {
-                    double average = (double)sum / numbers.Count;
-                    Console.WriteLine($"The average is {average}.");
-                }
-            }
+        Console.WriteLine($"The Sum is: {sum}");
 
-            int largestNumber = int.MinValue;
-            foreach (int number in numbers)
-            {
-                if (number > largestNumber)
-                {
-                    largestNumber = number;
-                }
-            }
-            Console.WriteLine($"The largest number is {largestNumber}.");
+        float average = ((float)sum) / numbers.Count;
+        Console.WriteLine($"The average is: {average}");
 
-            int smallest = int.MaxValue;
-            foreach (int number in numbers)
+        int largestNumber = numbers[0];
+        foreach (int number in numbers)
+        {
+            if (number > largestNumber)
             {
-                if (number > 0 && numberEntered < smallest)
-                {
-                    smallest = number;
-                }
-                if (smallest != int.MaxValue)
-                {
-                    Console.WriteLine($"The smallest positive number entered is: {smallest}.");
-                }
-            }
-            numbers.Sort();
-            Console.WriteLine("The sorted list is: ");
-            foreach (int number in numbers)
-                {
-                    Console.WriteLine(number);
-                }
+                largestNumber = number;
             }
         }
+        Console.WriteLine($"The largest number is: {largestNumber}");
+
+        int smallest = int.MaxValue;
+        foreach (int number in numbers)
+        {
+            if (number > 0 && number < smallest)
+            {
+                smallest = number;
+            }
+        }
+        if (smallest != int.MaxValue)
+        {
+            Console.WriteLine($"The smallest positive number entered is: {smallest}")
+        ;
+        }
+        numbers.Sort();
+        Console.WriteLine("The sorted list is: ");
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
+        }
     }
+}
