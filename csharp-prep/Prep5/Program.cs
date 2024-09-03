@@ -61,3 +61,5 @@ class Program
 // Please enter your name: Brother Burton
 // Please enter your favorite number: 42
 // Brother Burton, the square of your number is 1764
+
+// Version control is a place that retains and organizes versions of a developing program. Kind of like a file cabinet that holds files dedicated to a specific project that everyone in the office has access to. When you want to work on your assigned file, you can pull it to look at it, make changes to it, improve it, then put it back for everyone else to access. It's useful because the project in progress can be accessed at the same time from anyone, contributing to it. An application of this is, a team here all those contributing to it are in different locations around the world, they can collaborate from their own locations, make their contributions to their branch of the same project simultaneiously. A Git command example is git add . git commit -m "Added new feature to the homepage.:
