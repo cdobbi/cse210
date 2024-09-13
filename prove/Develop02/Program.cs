@@ -6,18 +6,19 @@ public class Program
     {
         Journal journal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
-        bool running = true;
+        string filePath = "myjournal.txt";
 
-        while (running)
+        while (true)
         {
             Console.WriteLine();
-            Console.WriteLine("Menu:");
+            Console.WriteLine("Choose an option from the menu below: ");
             Console.WriteLine("1. Write a new entry");
             Console.WriteLine("2. Random topic entry");
             Console.WriteLine("3. Display journal entries");
-            Console.WriteLine("4. Save entry");
+            Console.WriteLine("4. Save journal entries");
             Console.WriteLine("5. Load journal entries");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("6. Count entries by date");
+            Console.WriteLine("7. Exit");
             Console.WriteLine();
             Console.Write("Choose an option: ");
             string choice = Console.ReadLine();
@@ -25,7 +26,7 @@ public class Program
             if (choice == "1")
             {
                 Console.WriteLine();
-                Console.Write("Enter today's date: ");
+                Console.Write("Enter today's date (YYYY-MM-DD): ");
                 string date = Console.ReadLine();
                 Console.Write("Topic of entry: ");
                 string topic = Console.ReadLine();
@@ -33,11 +34,13 @@ public class Program
                 string entry = Console.ReadLine();
                 Entry newEntry = new Entry(date, entry, topic);
                 journal.AddEntry(newEntry);
+                journal.SaveEntry(filePath);
+                Console.WriteLine("Entry saved.");
             }
             else if (choice == "2")
             {
                 Console.WriteLine();
-                Console.Write("Enter today's date: ");
+                Console.Write("Enter today's date (YYYY-MM-DD): ");
                 string date = Console.ReadLine();
                 string prompt = promptGenerator.GetRandomPrompt();
                 Console.WriteLine($"Prompt: {prompt} ");
@@ -45,6 +48,8 @@ public class Program
                 string entryText = Console.ReadLine();
                 Entry newEntry = new Entry(date, prompt, entryText);
                 journal.AddEntry(newEntry);
+                journal.SaveEntry(filePath);
+                Console.WriteLine("Entry saved.");
             }
             else if (choice == "3")
             {
@@ -54,30 +59,39 @@ public class Program
             else if (choice == "4")
             {
                 Console.WriteLine();
-                Console.Write("Enter file path to save journal entries: ");
-                string filePath = Console.ReadLine();
+                Console.Write("Enter file path to save journal entries to: ");
+                filePath = Console.ReadLine();
                 journal.SaveEntry(filePath);
+                Console.WriteLine("Journal entries saved.");
             }
             else if (choice == "5")
             {
                 Console.WriteLine();
-                Console.Write("Enter file path to load journal entries: ");
+                Console.Write("Enter file path to load journal entries from: ");
                 string loadPath = Console.ReadLine();
                 journal.LoadFromEntry(loadPath);
+                Console.WriteLine();
             }
             else if (choice == "6")
             {
-                running = false;
+                Console.WriteLine();
+                Console.Write("Enter the date to count entries (YYYY-MM-DD): ");
+                string date = Console.ReadLine();
+                int count = journal.CountEntriesByDate(date);
+                Console.WriteLine($"Number of entries on {date}: {count}");
+            }
+            else if (choice == "7")
+            {
                 Console.WriteLine();
                 Console.WriteLine("Goodbye!");
+                break;
             }
             else
             {
                 Console.WriteLine();
                 Console.WriteLine("Invalid option. Please try again.");
             }
-           
-       }
+        }
     }
 }
 
@@ -86,27 +100,6 @@ public class Program
 // CSE 210: Programming with Classes
 
 // Week 02 Develop: Journal Program
-// Problem Overview
-// Many people see the value of keeping a journal to record important events, and many people even set this as a goal. And yet, very few people actually follow through and keep a journal consistently.
-
-// Think to yourself for a moment: What are some reasons people do not follow through with their goal to keep a journal? Could a program or app help with any of these?
-
-// Some of the reasons you thought of might include the following:
-
-// We forget
-// It's not convenient to get out our written journal or find the electronic document
-// We don't feel like we have anything interesting to say
-// We don't feel like we have time for it
-// We aren't sure what to write
-// We feel overwhelmed with writing every event of the day, so we just don't write anything.
-// While it will not solve all of people's problems, a great program or an app could help remove some of these barriers. For example, an app could give you a reminder at a certain time of day or give you a direct link to your document.
-
-// Consider the last challenge mentioned above, that of being overwhelmed because it feels like you must write every event during the day, this seems to be a big problem for many people. Could an app help with this?
-
-// Solution Idea
-// What if the Journal app gave people a simple prompt to respond to every day? It could also record the response somewhere for them and even add elements like the data automatically.
-
-// These features could help address some of the challenges that keep people from journaling, and could be included in a mobile app or on a web page. The actual interface is not that critical, but the ability for a program to help solve a real problem is important to recognize.
 
 // Program Specification
 // For this assignment you will write a program to help people record the events of their day by supplying prompts and then saving their responses along with the question and the date to a file.

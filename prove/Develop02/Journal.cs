@@ -21,12 +21,11 @@ public class Journal
     }
     public void SaveEntry(string filePath )
     {
-        using (StreamWriter witer = new StreamWriter(filePath))
+        using (StreamWriter writer = new StreamWriter(filePath))
         {
             foreach (var newEntry in _entries)
             {
-                Console.WriteLine($"{newEntry._date}|{newEntry._entryText}|{newEntry._randomTopic}");
-                Console.WriteLine();
+                writer.WriteLine($"{newEntry.Date}|{newEntry.EntryText}|{newEntry.RandomTopic}");
             }
         }
     }
@@ -45,9 +44,40 @@ public class Journal
             {
                 string line = reader.ReadLine();
                 string[] parts = line.Split("|");
-                Entry newEntry = new Entry(parts[0], parts[1], parts[2]);
-                _entries.Add(newEntry);
+                if (parts.Length == 3)
+                {
+                    Entry newEntry = new Entry(parts[0], parts[1], parts[2]);
+                    _entries.Add(newEntry);
+                    Console.WriteLine($" Loaded entry: {newEntry.Date} {newEntry.RandomTopic} {newEntry.EntryText}");
+                }
+                else
+                {
+                    Console.WriteLine($"Invalid entry format: {line}");
+                }
             }
         }
+        if (_entries.Count == 0)
+        {
+            Console.WriteLine();
+            Console.WriteLine("No entries loaded.");
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.WriteLine();
+            Console.WriteLine($"{_entries.Count} entries loaded successfully.");
+        }
+    }
+    public int CountEntriesByDate(string date)
+    {
+        int count = 0;
+        foreach (var entry in _entries)
+        {
+            if (entry.Date == date)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }
