@@ -1,108 +1,74 @@
-\using System;
-public class Program
+using System;
+using System.Collections.Generic;
+using System.IO;
+public class Journal
 {
-    public static void Main(string[] args)
+    private List<Entry> _entries;
+    public Journal()
     {
-        Journal journal = new Journal();
-        PromptGenerator promptGenerator = new PromptGenerator();
-        bool running = true;
-        string filePath = "myjournal.txt";
-
-        while (running)
-        while (true)
+        _entries = new List<Entry>();
+    }
+    public void AddEntry(Entry newEntry)
+    {
+        _entries.Add(newEntry);
+    }
+    public void DisplayEntries()
+    {
+        foreach (var newEntry in _entries)
         {
-            Console.WriteLine();
-            Console.WriteLine("Menu:");
-            Console.WriteLine("Choose an option from the menu below: ");
-            Console.WriteLine("1. Write a new entry");
-            Console.WriteLine("2. Random topic entry");
-            Console.WriteLine("3. Display journal entries");
-            Console.WriteLine("4. Save entry");
-            Console.WriteLine("4. Save journal entries");
-            Console.WriteLine("5. Load journal entries");
-            Console.WriteLine("6. Exit");
-            Console.WriteLine("6. Count entries by date");
-            Console.WriteLine("7. Exit");
-            Console.WriteLine();
-            Console.Write("Choose an option: ");
-            string choice = Console.ReadLine();
-
-            if (choice == "1")
-            {
-                Console.WriteLine();
-                Console.Write("Enter today's date: ");
-                Console.Write("Enter today's date (YYYY-MM-DD): ");
-                string date = Console.ReadLine();
-                Console.Write("Topic of entry: ");
-                string topic = Console.ReadLine();
-                Console.Write("Write your entry: ");
-                string entry = Console.ReadLine();
-                Entry newEntry = new Entry(date, entry, topic);
-                journal.AddEntry(newEntry);
-                journal.SaveEntry(filePath);
-                Console.WriteLine("Entry saved.");
-            }
-            else if (choice == "2")
-            {
-                Console.WriteLine();
-                Console.Write("Enter today's date: ");
-                Console.Write("Enter today's date (YYYY-MM-DD): ");
-                string date = Console.ReadLine();
-                string prompt = promptGenerator.GetRandomPrompt();
-                Console.WriteLine($"Prompt: {prompt} ");
-                Console.Write("Write your entry: ");
-                string entryText = Console.ReadLine();
-                Entry newEntry = new Entry(date, prompt, entryText);
-                journal.AddEntry(newEntry);
-                journal.SaveEntry(filePath);
-                Console.WriteLine("Entry saved.");
-            }
-            else if (choice == "3")
-            {
-                journal.DisplayEntries();
-                Console.WriteLine();
-            }
-            else if (choice == "4")
-            {
-                Console.WriteLine();
-                Console.Write("Enter file path to save journal entries: ");
-                string filePath = Console.ReadLine();
-                Console.Write("Enter file path to save journal entries to: ");
-                filePath = Console.ReadLine();
-                journal.SaveEntry(filePath);
-                Console.WriteLine("Journal entries saved.");
-            }
-            else if (choice == "5")
-            {
-                Console.WriteLine();
-                Console.Write("Enter file path to load journal entries: ");
-                Console.Write("Enter file path to load journal entries from: ");
-                string loadPath = Console.ReadLine();
-                journal.LoadFromEntry(loadPath);
-                Console.WriteLine();
-            }
-            else if (choice == "6")
-            {
-                running = false;
-                Console.WriteLine();
-                Console.Write("Enter the date to count entries (YYYY-MM-DD): ");
-                string date = Console.ReadLine();
-                int count = journal.CountEntriesByDate(date);
-                Console.WriteLine($"Number of entries on {date}: {count}");
-            }
-            else if (choice == "7")
-            {
-                Console.WriteLine();
-                Console.WriteLine("Goodbye!");
-                break;
-            }
-            else
-            {
-                Console.WriteLine();
-                Console.WriteLine("Invalid option. Please try again.");
-            }
-
-       }
+            newEntry.Display();
         }
+    }
+    public void SaveEntry(string filePath )
+    {
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            foreach (var newEntry in _entries)
+            {
+                Console.WriteLine($"{newEntry._date}|{newEntry._topic}|{newEntry._journalEntry}");
+                Console.WriteLine();
+            }
+        }
+    }
+    public void LoadFromEntry(string filePath)
+    {
+        string line = reader.ReadLine();
+        string[]categories = line.Split("|");
+        Entry newEntry = new Entry(categories[0],categories[1],categories[2]);
+        _entries.Add(newEntry);
+
+        if (categories.Length == 3)
+        {
+            Entry newEntry = new Entry(categories[0],categories[1],categories[2]);
+            _entries.Add(newEntry);
+            Console.WriteLine($" Loaded entry: {newEntry._date} {newEntry._topic} {newEntry._journalEntry}");
+        }
+        else
+        {
+            Console.WriteLine("Invalid entry");
+        }
+    }
+    if (_entries.Count == 0)
+    {
+        Console.WriteLine();
+        Console.WriteLine("No entries loaded.");
+        Console.WriteLine();
+    }
+    else
+    {
+        Console.WriteLine();
+        Console.WriteLine($"{_entries.Count} entries loaded successfully.");
+    }
+    public int CountEntriesByDate(string _date)
+    {
+        int count = 0;
+        foreach (var _journalEntry in _entries)
+        {
+            if (_journalEntry.Date == _date)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }
