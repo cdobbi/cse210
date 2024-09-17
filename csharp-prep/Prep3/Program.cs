@@ -53,14 +53,6 @@ class Program
 
 //    CSE 210: Programming with Classes
 
-// Program Specification
-// Here are the instructions that you saw previously in CSE 110 that we will use as our program specification:
-
-// Overview
-// In the Guess My Number game the computer picks a magic number, and then the user tries to guess it. After each guess, the computer tells the user to guess "higher" or "lower" until they guess the magic number.
-
-// This assignment is a little tricky, because it brings together many of the concepts you've learned in this course including loops and if statements.
-
 // Core Requirements
 // Work through these core requirements step-by-step to complete the program. Please don't skip ahead and do the whole thing at once, because many people benefit from seeing the program built up step by step.
 
@@ -124,3 +116,4 @@ class Program
 // You should complete the 3 Core Requirements.
 // The stretch challenges are optional.
 // Make sure to use the same project template that you did for the previous activities. However, this time, you should add your code in Program.cs file in the the Prep 3 project.
+
