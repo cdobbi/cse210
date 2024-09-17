@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
-
-
 class Program
-{
-
-    static void Main(string[] args)
+{    static void Main(string[] args)
     {
         Console.WriteLine("Prep4");
         Console.WriteLine("");
@@ -21,6 +17,7 @@ class Program
                 numbers.Add(numberEntered);
             }
         }
+
         int sum = 0;
         foreach (int number in numbers)
         {
@@ -29,6 +26,7 @@ class Program
         Console.WriteLine($"The Sum is: {sum}");
         float average = ((float)sum) / numbers.Count;
         Console.WriteLine($"The average is: {average}");
+
         int largestNumber = numbers[0];
         foreach (int number in numbers)
         {
@@ -38,6 +36,7 @@ class Program
             }
         }
         Console.WriteLine($"The largest number is: {largestNumber}");
+
         int smallest = int.MaxValue;
         foreach (int number in numbers)
         {
@@ -46,6 +45,7 @@ class Program
                 smallest = number;
             }
         }
+
         if (smallest != int.MaxValue)
         {
             Console.WriteLine($"The smallest positive number entered is: {smallest}")
@@ -53,6 +53,7 @@ class Program
         }
         numbers.Sort();
         Console.WriteLine("The sorted list is: ");
+
         foreach (int number in numbers)
         {
             Console.WriteLine(number);
@@ -61,12 +62,6 @@ class Program
 }
 
 // CSE 210: Programming with Classes
-
-// Assignment Instructions
-// For this assignment, you will complete another assignment that you did previously in CSE 110, but in this case, write the program in C#:
-
-// Program Specification
-// Here are the instructions that you saw previously in CSE 110 that we will use as our program specification:
 
 // Assignment
 // Ask the user for a series of numbers, and append each one to a list. Stop when they enter 0.
@@ -128,6 +123,3 @@ class Program
 //   3
 //   5
 //   7
-  
-// Write and Test the program
-// Write and test the program as described above.
