@@ -1,5 +1,5 @@
 using System;
-public class Job
+public class Employment
 {
     public string _jobTitle;
     public string _company;
