@@ -5,16 +5,33 @@ class Program
     static void Main(string[] args)
 
     {
+        Console.WriteLine();
+        Console.WriteLine("Welcome to the Grade Calculator!");
         Console.Write("What is your grade as a percentage? ");
         string userInput = Console.ReadLine();
         int grade = int.Parse(userInput);
         string sign = "";
         int lastDigit = grade % 10;
+        string letter = "";
+
+        if (grade >= 90)
+            letter = "A";
+        else if (grade >= 80)
+            letter = "B";
+        else if (grade >= 70)
+             letter = "C";
+        else if (grade >= 60)
+            letter = "D";
+        else
+            letter = "F";
+        
 
         if (grade >= 93)
         {
             sign = " ";
-            Console.WriteLine($"You earned an: A{sign}");
+            Console.WriteLine($"You earned an: {letter}{sign}");
+            Console.WriteLine("Congratulations! You passed the class!");
+            Console.WriteLine();
         }
         else if (grade >= 90)
         {
@@ -24,7 +41,9 @@ class Program
                 sign = "-";
             else
                 sign = " ";
-            Console.WriteLine($"You earned an: A{sign}");
+            Console.WriteLine($"You earned an: {letter}{sign}");
+            Console.WriteLine("Congratulations! You passed the class!");
+            Console.WriteLine();
         }
         else if (grade >= 80)
         {
@@ -34,8 +53,10 @@ class Program
                 sign = "-";
             else
                 sign = " ";
+            Console.WriteLine($"You earned a: {letter}{sign}");
+            Console.WriteLine("Congratulations! You passed the class!");
+            Console.WriteLine();
 
-            Console.WriteLine($"You earned a: B{sign}");
         }
         else if (grade >= 70)
         {
@@ -45,7 +66,10 @@ class Program
                 sign = "-";
             else
                 sign = " ";
-            Console.WriteLine($"You earned a: C{sign}");
+            Console.WriteLine($"You earned a: {letter}{sign}");
+            Console.WriteLine("Congratulations! You passed the class!");
+            Console.WriteLine();
+
         }
         else if (grade >= 60)
         {
@@ -55,14 +79,17 @@ class Program
                 sign = "-";
             else
                 sign = " ";
-            Console.WriteLine($"You earned a: D{sign}");
+            Console.WriteLine($"You earned a: {letter}{sign}");
+            Console.WriteLine("You didn't pass this time. Keep trying!");
+            Console.WriteLine();
         }
         else
         {
             if (grade <= 59)
                 sign = " ";
-            Console.WriteLine($"You earned a: F{sign}");
-            Console.WriteLine("Keep trying!");
+            Console.WriteLine($"You earned a: {letter}{sign}");
+            Console.WriteLine("You didn't pass this time. Keep trying!");
+            Console.WriteLine();
         }
     }
 }
