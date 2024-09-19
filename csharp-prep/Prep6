@@ -1,3 +1,5 @@
+Version control is a way to access and control files of a whole program without making changes to other files of the program. The project/tree is saved in a repository/holding, where everyone working on the project can access it online. The branches can be retrieved and modified by anyone working in the tree, without erasing the previous version of a committed branch. For instance, Github is an example of version control where my husband is part of a team from all over the world and each team member can access the repository online, pull the latest updates so they each know what changes to make with their assigned file, make changes and send/commit their work back to their branch without making changes to the whole project. The whole team has the latest version (and previous versions), of the branch, of the tree, in the repository, in Github, online.
+
 <!-- CSE 210: Programming with Classes
 
 Version Control - Articulate
@@ -19,5 +21,4 @@ Use your own words
 Remember that your goal is to learn these topics well enough that you can explain them in your own words in a job interview or when you talk with your coworkers. With this in mind, you should write your response in your own words.
 
 You should NOT copy and paste your response from the preparation material or from another source you find online, including using an AI generator. Using a response that is not your own is a violation of the University Honor Code, will result in a 0 on the assignment or failing the class, and will not help you learn.
-
-Copyright © Brigham Young University-Idaho | All rights reserved -->
+ -->
