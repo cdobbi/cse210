@@ -5,7 +5,7 @@ public class Entry
     public string _journalEntry;
     
 
-    public Entry(string _date, string _topic, string _journalEntry)
+    public Entry(string date, string topic, string journalEntry)
     {
         _date = date;
         _topic = topic;
@@ -14,9 +14,9 @@ public class Entry
     public void Display()
     {
         Console.WriteLine();
-        Console.WriteLine($"Date: {date}");
-        Console.WriteLine($"Topic: {topic}");
-        Console.WriteLine($"Journal entry: {journalEntry}");
+        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"Topic: {_topic}");
+        Console.WriteLine($"Journal entry: {_journalEntry}");
         Console.WriteLine();
     }
 }

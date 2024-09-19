@@ -1,3 +1,5 @@
+// I added the ability to count entries by a given date, 9 random prompts, an 'Exit' option to the menu and I attempted to add the ability to store entries to a file 'myjournal.txt.' When choosing to load entries from another date, it gives a count of the entries but doesn't load entries from an external file. It will load current entries and count those though. There are a few bugs, I think. I'll continue to work on this to fix the bugs.
+
 using System;
 public class Program
 {    public static void Main(string[] args)
@@ -5,8 +7,9 @@ public class Program
         Journal journal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
         string filePath = "myjournal.txt";
+        bool running = true;
 
-        while (true)
+        while (running)
         {
             Console.WriteLine();
             Console.WriteLine("Choose an option from the menu below: ");
@@ -58,7 +61,7 @@ public class Program
             {
                 Console.WriteLine();
                 Console.Write("Enter file path to save journal entries to: ");
-                string filePath = Console.ReadLine();
+                string savePath = Console.ReadLine();
                 journal.SaveEntry(filePath);
                 Console.WriteLine("Journal entries saved.");
             }
@@ -83,7 +86,7 @@ public class Program
             {
                 Console.WriteLine();
                 Console.WriteLine("Goodbye!");
-                break;
+                running = false;
             }
             else
             {

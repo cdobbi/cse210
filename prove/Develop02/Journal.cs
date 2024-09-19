@@ -19,35 +19,36 @@ public class Journal
             newEntry.Display();
         }
     }
-    public void SaveEntry(string filePath )
+    public void SaveEntry(string filePath)
     {
         using (StreamWriter writer = new StreamWriter(filePath))
         {
             foreach (var newEntry in _entries)
             {
-                Console.WriteLine($"{newEntry._date}|{newEntry._topic}|{newEntry._journalEntry}");
-                Console.WriteLine();
-            }
+                writer.WriteLine($"{newEntry._date}|{newEntry._topic}|{newEntry._journalEntry}");
+            }     
         }
     }
     public void LoadFromEntry(string filePath)
     {
-        string line = reader.ReadLine();
-        string[]categories = line.Split("|");
-        Entry newEntry = new Entry(categories[0],categories[1],categories[2]);
-        _entries.Add(newEntry);
-
-        if (categories.Length == 3)
+        using (StreamReader reader = new StreamReader(filePath))
         {
-            Entry newEntry = new Entry(categories[0],categories[1],categories[2]);
-            _entries.Add(newEntry);
-            Console.WriteLine($" Loaded entry: {newEntry._date} {newEntry._topic} {newEntry._journalEntry}");
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[]categories = line.Split("|");
+                if (categories.Length == 3)
+                {
+                    Entry newEntry = new Entry(categories[0],categories[1],categories[2]);
+                    _entries.Add(newEntry);
+                    Console.WriteLine($" Loaded entry: {newEntry._date} {newEntry._topic} {newEntry._journalEntry}");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid entry");
+                }
+            }
         }
-        else
-        {
-            Console.WriteLine("Invalid entry");
-        }
-    }
     if (_entries.Count == 0)
     {
         Console.WriteLine();
@@ -59,16 +60,18 @@ public class Journal
         Console.WriteLine();
         Console.WriteLine($"{_entries.Count} entries loaded successfully.");
     }
-    public int CountEntriesByDate(string _date)
-    {
-        int count = 0;
-        foreach (var _journalEntry in _entries)
-        {
-            if (_journalEntry.Date == _date)
-            {
-                count++;
-            }
-        }
-        return count;
-    }
 }
+public int CountEntriesByDate(string date)
+{
+    int count = 0;
+    foreach (var journalEntry in _entries)
+    {
+        if (journalEntry._date == date)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+}
+
