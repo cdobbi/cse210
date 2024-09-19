@@ -27,20 +27,7 @@ class Program
 }
 
 //CSE 210: Programming with Classes
-
-// Abstraction is the first principle of programming with classes. As you get better at applying it, you'll find you're able to think and talk about your software, with programmers and non-programmers alike, in a very natural way. Please don't underestimate the value of this ability. Being able to communicate clearly about what is needed and what you're doing is at the very heart of creating software that is ready for change.
-
-// Terms and Definitions
-// Class - A new custom data type that defines attributes (member variables) and methods. This is like a blueprint to create instances or objects of that class. Example: A Person has given name and family name.
-
-// Instance - A variable whose data type is the class. We often use the term Object interchangeably. Example: We can have two instances of the Person class: one for John, and one for Mary.
-
-// Instantiate - A verb that means "to create an instance of." Example: We can instantiate the Person class to create a new object.
-
-// Method - A member function. Methods are called using "dot notation" with an instance of the class before the dot. Example: person1.GetEasternName()
-
 // Activity Instructions
-// Practice the principle of abstraction by creating classes to represent a resume or an job history for a person like you might see on LinkedIn.
 
 // Design the Classes
 // You program should contain two classes one for a Job and one for the Resume itself, as follows:
