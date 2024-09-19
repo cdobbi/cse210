@@ -39,6 +39,7 @@ class Program
                 {
                     magicNumber = randomGenerator.Next(1, 10);
                     guess = -1;
+                    guessCount = 0;
                 }
                 else if (playAgain == "n")
                 {
@@ -52,10 +53,7 @@ class Program
 }
 
 //    CSE 210: Programming with Classes
-
 // Core Requirements
-// Work through these core requirements step-by-step to complete the program. Please don't skip ahead and do the whole thing at once, because many people benefit from seeing the program built up step by step.
-
 // Start by asking the user for the magic number. (In future steps, we will change this to have the computer generate a random number, but to get started, we'll just let the user decide what it is.)
 
 // Ask the user for a guess.
@@ -66,17 +64,14 @@ class Program
 
 // The following shows the expected output at this point:
 
-
 //   What is the magic number? 6
 //   What is your guess? 4
 //   Higher
   
-
 //   What is the magic number? 6 
 //   What is your guess? 7
 //   Lower
   
-
 //   What is the magic number? 6
 //   What is your guess? 6
 //   You guessed it!
@@ -86,7 +81,6 @@ class Program
 // At this point, the user should be able to keep playing until they get the correct answer.
 
 // The following shows the expected output at this point:
-
 
 //   What is the magic number? 18
 //   What is your guess? 5
@@ -115,5 +109,5 @@ class Program
 // Write and test the program as described above.
 // You should complete the 3 Core Requirements.
 // The stretch challenges are optional.
-// Make sure to use the same project template that you did for the previous activities. However, this time, you should add your code in Program.cs file in the the Prep 3 project.
+// Make sure to use the same project template that you did for the previous activities. However, this time, you should add your code in Program.cs file in the Prep 3 project.
 
