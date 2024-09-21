@@ -1,4 +1,4 @@
-// I added the ability to count entries by a given date, 9 random prompts, an 'Exit' option to the menu and I attempted to add the ability to store entries to a file 'myjournal.txt.' When choosing to load entries from another date, it gives a count of the entries but doesn't load entries from an external file. It will load current entries and count those though. There are a few bugs, I think. I'll continue to work on this to fix the bugs.
+// I havce 7 options in my menu, an entry that is not random, a random topic entry with 9 random prompts, added a 'count entries by a given date,' an 'Exit' option to the menu, store entries to a file 'myjournal.txt,' load entries from a file and load entries from a given date, I also added a bit of error checking.
 
 using System;
 public class Program
@@ -9,6 +9,13 @@ public class Program
         string filePath = "myjournal.txt";
         bool running = true;
 
+        Entry newEntry = new Entry("2222-22-22", "Topic", "Some kind of journal entry.");
+        journal.AddEntry(newEntry);
+        journal.DisplayEntries();
+        journal.SaveEntry(filePath);
+        journal.LoadFromEntry(filePath);
+        journal.CountEntriesByDate("2024-09-20");
+    
         while (running)
         {
             Console.WriteLine();
@@ -33,8 +40,8 @@ public class Program
                 string _topic = Console.ReadLine();
                 Console.Write("Write your journal entry: ");
                 string _journalEntry = Console.ReadLine();
-                Entry newEntry = new Entry(_date, _topic, _journalEntry);
-                journal.AddEntry(newEntry);
+                Entry newJournalEntry = new Entry(_date, _topic, _journalEntry);
+                journal.AddEntry(newJournalEntry);
                 journal.SaveEntry(filePath);
                 Console.WriteLine("Journal entry saved.");
             }
@@ -45,10 +52,10 @@ public class Program
                 string _date = Console.ReadLine();
                 string _prompt = promptGenerator.GetRandomPrompt();
                 Console.WriteLine($"Prompt: {_prompt} ");
-                Console.Write("Write your jouranl entry: ");
+                Console.Write("Write your journal entry: ");
                 string _journalEntry = Console.ReadLine();
-                Entry newEntry = new Entry(_date, _prompt, _journalEntry);
-                journal.AddEntry(newEntry);
+                Entry newRandomEntry = new Entry(_date, _prompt, _journalEntry);
+                journal.AddEntry(newRandomEntry);
                 journal.SaveEntry(filePath);
                 Console.WriteLine("Entry saved.");
             }
@@ -62,7 +69,7 @@ public class Program
                 Console.WriteLine();
                 Console.Write("Enter file path to save journal entries to: ");
                 string savePath = Console.ReadLine();
-                journal.SaveEntry(filePath);
+                journal.SaveEntry(savePath);
                 Console.WriteLine("Journal entries saved.");
             }
             else if (choice == "5")
@@ -75,7 +82,6 @@ public class Program
             }
             else if (choice == "6")
             {
-                running = false;
                 Console.WriteLine();
                 Console.Write("Enter the date to count entries (YYYY-MM-DD): ");
                 string _date = Console.ReadLine();
