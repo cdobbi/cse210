@@ -1,0 +1,38 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CSE 210: Programming with Classes
+BYU-I logo
+Encapsulation - Articulate
+Overview
+Articulate the principle of encapsulation.
+
+Instructions
+Now that you have learned about the principle of encapsulation, and designed and developed a program using it, return to Canvas and answer the following question (the way you would in a job interview):
+
+What is encapsulation and why is it important?
+Your response must:
+
+Explain the meaning of Encapsulation
+Highlight a benefit of Encapsulation
+Provide an application of Encapsulation
+Use a code example of Encapsulation from the program you wrote
+Thoroughly explain these concepts (this likely cannot be done in less than 100 words)
+Use your own words
+Remember that your goal is to learn these topics well enough that you can explain them in your own words in a job interview or when you talk with your coworkers. With this in mind, you should write your response in your own words.
