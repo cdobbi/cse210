@@ -1,7 +1,10 @@
+
+
+
 CSE 210: Programming with Classes
 Begin with Prayer
 Discuss the Preparation Learning Activity
-Take a minute to talk about the learning activity from this week. Talk through any difficulties that people had understanding the material or completing the activity.
+Take a minute to talk about the learning activity from this week.
 
 What part of the learning activity was the hardest for you?
 Guidance from a Mentor
