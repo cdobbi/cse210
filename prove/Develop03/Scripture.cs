@@ -56,7 +56,6 @@ class Scripture
     }
 }
 
-
 // A class for a Scripture will need a constructor that accepts both a _reference and the text of the scripture. If the Scripture class internally stores a List of Word objects, the first thought would be to pass a List<Word> variable to the constructor. While this could work, it would have some downsides. First, it would expose the internal storage of the Scripture to the person using the class (losing the benefits of encapsulation). Second, it would require the person using the class to do the work of splitting their text into the list, the way this class expects it. Not only is this extra work, but it also breaks the principle of encapsulation, and will limit your ability to change your class in the future.
 
 // Instead of passing in a list of _words, it would better align with the principle of encapsulation to pass in a string that is the text of the scripture. Then, the constructor would have the responsibility of creating the list, and splitting up the _words in the string to create Word objects for each one and put them in the list.

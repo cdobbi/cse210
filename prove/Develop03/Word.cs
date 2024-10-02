@@ -34,7 +34,4 @@ class Word
     }
 }
 
-
-
-
 // A class for a Word will need a constructor as well. This constructor should accept the text of the word to save it as an attribute. In addition, the constructor will need to set the initial visibility of the word (whether it is shown or hidden). Notice that you should not need to pass in the visibility of the word. It can be set to be visible by default.
