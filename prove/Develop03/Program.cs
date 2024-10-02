@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-// Stretch: added a line for debugging, and "As a stretch challenge, try to randomly select from only those words that are not already hidden." They program only hides words that are not already hidden.
+// Stretch: added a line for debugging, and "As a stretch challenge, try to randomly select from only those words that are not already hidden." The program only hides words that are not already hidden.
 //I received quidance fro my husband, a classmate and looked online for answers that I couldn't find in the class material. I also looked at my code from my python class to help me understand the concepts and structure of the code. I copy and pasted some of my code from my Python class but I had to change it to fit the C# language. I also used the code helps from the assignment and asked Copilot a ton of questions and for claifications when I was stuck and could't figure out what to do next. Any explanations you have for me would be greatly appreciated. I've spent about 25 hours just on week 03 material and assignments and am still struggling to understand a few things such as Constructors.
 class Program
 {
