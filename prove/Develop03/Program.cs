@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+// added a line for debugging
 class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine();
         Console.WriteLine("Welcome to Scripture Flashcards!");
-        Console.Write("Press Enter to begin.");
+        Console.Write("Press Enter to begin: ");
         Console.ReadLine();
 
         List<string> verses = new List<string>
@@ -14,26 +16,36 @@ class Program
             "In all thy ways acknowledge him, and he shall direct thy paths."
         };
         
-        Words scripture = new Words(verses);
+        Scripture scripture = new Scripture("Proverbs 3:5-6", verses);
+        Console.WriteLine();
         Console.WriteLine("Proverbs 3:5-6");
         Console.WriteLine(scripture.GetWords());
 
-        string input = " ";
+        string input = "";
         while (input.ToLower() != "quit")
         {
-            Console.WriteLine("Press Enter to hide the next word, or type 'quit' to exit.");
+            Console.WriteLine();
+            Console.Write("Press Enter to hide the next word, or type 'quit' to exit: ");
             input = Console.ReadLine();
+
             if (input.ToLower() != "quit")
             {
-            scripture.HideRandomWord();
-            Console.Clear();
-            Console.WriteLine("Proverbs 3:5-6");
-            Console.WriteLine(scripture.GetWords());
+                Console.WriteLine("Hiding a word...");
+                scripture.HideRandomWord();
+                Console.Clear();
+                Console.WriteLine("Proverbs 3:5-6");
+                Console.WriteLine(scripture.GetWords());
+
+                if (scripture.IsCompletelyHidden())
+                {
+                    Console.WriteLine("All words have been hidden. Goodbye!");
+                    Console.WriteLine();
+                    break;
+                }
             }
         }
     }
 }
-
  
 
 // Week 03 Develop:Reference Memorizer
