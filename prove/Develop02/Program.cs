@@ -103,6 +103,7 @@ public class Program
     }
 }
 
+
 // CSE 210: Programming with Classes
 // Week 02 Develop: Journal Program
 // Program Specification
