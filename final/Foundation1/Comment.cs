@@ -1,11 +1,16 @@
+using System;
+using System.Collections.Generic;
 public class Comment
 {
-    public string Author { get; private set; }
-    public string Text { get; private set; }
-
-    public Comment(string author, string text)
+    public string Author { get; set; }
+    public string CommentText { get; set; }
+    public Comment(string author, string commentText)
     {
         Author = author;
-        Text = text;
+        CommentText = commentText;
+    }
+    public void DisplayComment()
+    {
+        Console.WriteLine($"{Author}: {CommentText}");
     }
 }
