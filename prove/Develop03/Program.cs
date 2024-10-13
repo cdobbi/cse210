@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 // Stretch: added a line for debugging, and "As a stretch challenge, try to randomly select from only those words that are not already hidden." The program only hides words that are not already hidden.
