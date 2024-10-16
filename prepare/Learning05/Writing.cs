@@ -17,7 +17,7 @@ public class Writing : Assignment
     {
         string studentName = GetSummary();
 
-        return $"{_title} by {studentName}";
+        return $"{_title} By: {studentName}";
 
     }
 }

@@ -14,7 +14,7 @@ public class Math : Assignment
 
     public string GetHomework()
     {
-        return $"Section {_textBookSection} Problems {_problems}";
+        return $"Section: {_textBookSection}\nProblems: {_problems}";
 
     }
 }
