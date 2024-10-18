@@ -22,6 +22,7 @@ public class Writing : Assignment
     }
 }
 
+
 // Create the class and set up the inheritance relationship.
 // Add the member variables and set up the constructor as you did for the MathAssignment class.
 // Add the GetWritingInformation() method.

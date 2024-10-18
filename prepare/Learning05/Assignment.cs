@@ -31,7 +31,6 @@ public class Assignment
 }
 
 
-
 // Begin by creating a new file and a class for your base Assignment class.
 // Add the attributes as private member variables.
 // Create a constructor for this class that receives a student name and topic and sets the member variables.

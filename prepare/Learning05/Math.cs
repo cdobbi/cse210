@@ -19,6 +19,7 @@ public class Math : Assignment
     }
 }
 
+
 // Create a new file for the MathAssignment class.
 // Create this class and make sure to specify that it inherits from the base Assignment class.
 // Add the attributes as private member variables. Make sure that you do not create new member variables for the ones you inherited from the base class.
