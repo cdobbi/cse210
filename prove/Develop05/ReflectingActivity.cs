@@ -16,10 +16,9 @@ public class ReflectingActivity : Activity
 
     public void Run()
     {
-        DisplayStartingMessage();  // Use the property to access _description
-        Console.WriteLine("Starting Reflection activity... ");
-        Console.WriteLine(Description);
+        DisplayStartingMessage();
         Console.Write("Enter the duration in seconds: ");
+
         if (int.TryParse(Console.ReadLine(), out int duration))
         {
             Duration = duration;
@@ -34,6 +33,9 @@ public class ReflectingActivity : Activity
 
     private void PerformReflecting()
     {
+        Console.Write("\nBegin shortly ... ");
+        ShowSpinner(5);
+        
         int elapsed = 0;
         string prompt = _prompts[_random.Next(_prompts.Count)];
         Console.WriteLine(prompt);
@@ -44,7 +46,7 @@ public class ReflectingActivity : Activity
             Console.WriteLine(question);
             Console.Write("Your reflection: ");
             string reflecton = Console.ReadLine();
-            ShowSpinner(5);
+            // ShowSpinner(5);
             elapsed += 5;
         }
 

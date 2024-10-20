@@ -47,26 +47,31 @@ public class Program
                 case "2":
                     ReflectingActivity reflectingActivity = new ReflectingActivity(
                         "Reflecting Exercise",
-                        "This activity will help you reflect on the times in your life when you have shown strength and resilience.",
+                        "This activity will take you through a series of prompts for you to reflect on.",
                         0,
                         new List<string>
                         {
+                            "Think of a time you were brave.",
                             "Think of a time when you stood up for someone else.",
                             "Think of a time when you did something really difficult.",
-                            "Think of a time when you helped someone in need.",
-                            "Think of a time when you did something truly selfless."
+                            "Think of a time you showed real grit.",
+                            "Think of a time when you were particularly helpful.",
+                            "Think of a time when you did something selfless.",
+                            "Think of a time that brought you joy. "
                         },
                         new List<string>
-                        {
+                        {   
+                            "Is this something you do often and to what benefit?",
                             "Why was this experience meaningful to you?",
-                            "Have you ever done anything like this before?",
-                            "How did you get started?",
-                            "How did you feel when it was complete?",
-                            "What made this time different than other times when you were not as successful?",
-                            "What is your favorite thing about this experience?",
-                            "What could you learn from this experience that applies to other situations?",
+                            "At that time, had you ever done anything like it before?",
+                            "What made you do this?",
+                            "How did this make you feel?",
+                            "What made this time different than other times?",
+                            "What's your favorite thing about this experience?",
+                            "What was learned from this?",
+                            "Does this apply to or effect your life right now?",
                             "What did you learn about yourself through this experience?",
-                            "How can you keep this experience in mind in the future?",
+                            "Is this something you would repeat and why?",
                         }
                     );
                     reflectingActivity.Run();
@@ -77,14 +82,14 @@ public class Program
                         "Listing Exercise",
                         "Much like the effect that counting your blessings has, this activity will help you to see the good in your life by listing.",
                         0,
-                        5, // Assuming 'count' is 5, adjust as needed
+                        5, // count
                     new List<string>
                     {
                         "Who are people you appreciate? ",
                         "What are personal strengths of yours? ",
-                        "What 10 things are you grateful for? ",
-                        "Name 7 stars in the sky: ",
-                        "Do you remember the names of the 7 dwarves? "
+                        "In what ways would you like to improve? ",
+                        "How many ways can you show gratitude? ",
+                        "What blessing did you have yesterday? "
                     }
                 );
                     listingActivity.Run();

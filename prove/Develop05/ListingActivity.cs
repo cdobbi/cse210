@@ -11,7 +11,7 @@ public class ListingActivity : Activity
     public ListingActivity(string activityName, string description, int duration, int count, List<string> prompts)
         : base(activityName, description, duration)
     {
-        // Here we set any variables specific to the ListingActivity class
+        
         _count = 0;
         _prompts = prompts;
         _random = new Random();
@@ -24,11 +24,11 @@ public class ListingActivity : Activity
 
     public void Run()
     {
-        DisplayStartingMessage();  // Use the property to access _description
+        DisplayStartingMessage();
         Console.Write("Enter the duration in seconds: ");
         if (int.TryParse(Console.ReadLine(), out int duration))
         {
-            Duration = duration; // Use the property to set the duration
+            Duration = duration;
             PerformListing();
         }
         else
@@ -38,12 +38,13 @@ public class ListingActivity : Activity
         DisplayEndingMessage();
     }
     
-    // Method to get a list of responses from the user
     private void PerformListing()
     {
+        Console.Write("Begin shortly ... ");
+        ShowSpinner(5);
         List<string> responses = new List<string>();
         DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(Duration); // Use the property to get the duration
+        DateTime endTime = startTime.AddSeconds(Duration);
 
         string prompt = _prompts[_random.Next(_prompts.Count)];
         Console.WriteLine(prompt);
@@ -58,7 +59,7 @@ public class ListingActivity : Activity
                 break;
             }
 
-            Console.Write("Enter an item: ");
+            Console.Write("Input entries here: ");
             string response = Console.ReadLine();
             responses.Add(response);
         }

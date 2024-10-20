@@ -25,7 +25,7 @@ public class Activity
     }
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"\nYou've chosen: {_activityName}\nDuration: {_duration} seconds.\nDescription: {_description}\n");
+        Console.WriteLine($"\nYou've chosen: {_activityName}\nDescription: {_description}\n");
     }
     public void DisplayEndingMessage()
     {
