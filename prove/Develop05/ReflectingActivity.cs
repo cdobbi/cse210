@@ -44,7 +44,7 @@ public class ReflectingActivity : Activity
             Console.WriteLine(question);
             Console.Write("Your reflection: ");
             string reflecton = Console.ReadLine();
-            // ShowSpinner(5);
+            ShowSpinner(5);
             elapsed += 5;
         }
 
