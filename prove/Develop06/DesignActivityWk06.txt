@@ -1,0 +1,194 @@
+CSE 210: Programming with Classes
+BYU-I logo
+Home
+W1
+W2
+W3
+W4
+W5
+W6
+W7
+Polymorphism - Design Activity
+Overview
+Meet with your team and prepare a design for this week's programming assignment.
+
+Regarding "Guidance from a Mentor"
+Remember that throughout the activity, you'll receive Guidance from a Mentor. You should first answer the questions as a team, then, refer to the Guidance from a Mentor section to make sure you are on a good path.
+
+Make sure to expand and read each Guidance from a Mentor section as you move through the activity.
+
+Agenda
+Use the following as an agenda for your team meeting. Whoever is assigned to be the lead student for this gathering should help guide the group through these steps and ask the questions listed here.
+
+Before the meeting: Verify the time, location, and lead student
+This could be as simple as posting a message to your MS Teams channel that says something like, "Hi guys, are we still planning to meet tomorrow at 7pm Mountain Time? Let's use the MS Teams video feature again." Or, if someone else has already posted a message like this, it could be as simple as "liking" their message.
+
+Make sure to identify who will be the lead student for this week. For example, "Emily, are you still good to be the lead student for this week?"
+
+Begin with Prayer
+Discuss the Preparation Learning Activity
+Take a minute to talk about the learning activity from this week. Talk through any difficulties that people had understanding the material or completing the activity.
+
+What part of the learning activity was the hardest for you?
+Review the Program Specification
+Refer to the Eternal Quest program specification. As a team, review the program requirements and how it is supposed to work.
+
+What does the program do?
+What user inputs does it have?
+What output does it produce?
+How does the program end?
+Guidance from a Mentor
+A big part of this project will be the unique "gamification" components that each person will add themselves. For this design activity, you will focus on the core components that relate to the goal tracking, and then leave the other unique part for everyone to complete after the activity.
+
+Determine the classes
+The first step in designing a program like this is to think about the classes you will need. When thinking about classes, it is often helpful to consider the strong nouns in the program description.
+
+What are good candidates for classes in this program?
+What are the primary responsibilities of each class?
+Guidance from a Mentor
+As with the previous assignment, there is a natural application of inheritance in this program with a base class of Goal that defines the common responsibilities, behaviors, and attributes. Then, you should have derived classes that override any behaviors necessary from the base class and add any additional unique responsibilities that they have.
+
+Goal
+SimpleGoal
+EternalGoal
+ChecklistGoal
+While it is possible to handle all of the menu system and its related functions, including the saving of points, as static functions in the Program.cs file, because there is enough complexity there, it would be nice to encapsulate all that functionality into a separate "manager" class.
+
+GoalManager
+Evaluate the Design
+What is a benefit to having a separate class like GoalManager instead of just using static functions in Program.cs for all of the menu-related functionality?
+Define class behaviors
+Now that you have decided on the classes, you will need and their responsibilities, the next step is to define the behaviors of these classes. These will become methods for the class.
+
+Go through each of your classes and ask:
+
+What are the behaviors this class will have in order to fulfill its responsibilities? (In other words, what things should this class do?)
+Guidance from a Mentor
+One of the core pieces of functionality for each of these classes is that each goal needs to provide a way to record the event (in other words, mark that is has been accomplished another time). In addition, each one needs to provide a check to see if it is complete. Because these methods exist for all classes, they should be defined in the base class. However, because they all have different functionality, they should be overridden in the derived classes:
+
+RecordEvent - This method should do whatever is necessary for each specific kind of goal, such as marking a simple goal complete and adding to the number of times a checklist goal has been completed. It should return the point value associated with recording the event (keep in mind that it may contain a bonus in some cases if a checklist goal was just finished, for example).
+IsComplete - This method should return true if the goal is completed. The way you determine if a goal is complete is different for each type of goal.
+In addition to recording the event and checking if it is complete. Each goal will need to be shown in a list (with the checkbox etc), and also each one will need a string representation that can be saved to a text file. These should also be declared in the base class and overridden in the derived classes as needed:
+
+GetDetailsString - This method should return the details of a goal that could be shown in a list. It should include the checkbox, the short name, and description. Then in the case of the ChecklistGoal class, it should be overridden to shown the number of times the goal has been accomplished so far.
+GetStringRepresentation - This method should provide all of the details of a goal in a way that is easy to save to a file, and then load later.
+The following is a summary of the behaviors listed:
+
+Goal
+RecordEvent() : void (Abstract)
+IsComplete() : bool (Abstract)
+GetDetailsString() : string
+GetStringRepresentation() : string (Abstract)
+SimpleGoal
+RecordEvent() : void (Override)
+IsComplete() : bool (Override)
+GetStringRepresentation() : string (Override)
+EternalGoal
+RecordEvent() : void (Override)
+IsComplete() : bool (Override)
+GetStringRepresentation() : string (Override)
+ChecklistGoal
+RecordEvent() : void (Override)
+IsComplete() : bool (Override)
+GetDetailsString() : string (Override)
+GetStringRepresentation() : string (Override)
+In addition to these behaviors for the goals, the goal manager class will need behaviors related to the menu system such as the following:
+
+Start - This is the "main" function for this class. It is called by Program.cs, and then runs the menu loop.
+DisplayPlayerInfo - Displays the players current score.
+ListGoalNames - Lists the names of each of the goals.
+ListGoalDetails - Lists the details of each goal (including the checkbox of whether it is complete).
+CreateGoal - Asks the user for the information about a new goal. Then, creates the goal and adds it to the list.
+RecordEvent - Asks the user which goal they have done and then records the event by calling the RecordEvent method on that goal.
+SaveGoals - Saves the list of goals to a file.
+LoadGoals - Loads the list of goals from a file.
+In addition to the methods described here, you might find it helpful to create other private methods to help perform steps of these goals.
+
+Evaluate the Design
+What is a benefit of making the RecordEvent method an abstract method instead of leaving it blank or providing a default version?
+Notice that in the design above, the GetDetailsString method has a default implementation and is only overridden by the ChecklistGoal class. Why is the GetDetailsString method only overridden by the ChecklistGoal class and not the other two derived classes?
+Define class attributes
+Now that you have defined the classes, their responsibilities, and their behaviors, the next step is to determine what attributes the class should have, or what variables it needs to store.
+
+Go through each of your classes and ask:
+
+What attributes does this class need to fulfill its behaviors? (In other words, what variables should this class store?)
+What are the data types of these member variables?
+Guidance from a Mentor
+The goal classes all have some common elements, such as the name for the goal, a description, and the points to award for recording an event of that type.
+
+The derived goal classes will need to define the attributes necessary for them that are unique to each class. For example, the SimpleGoal will need to track whether it is complete and the ChecklistGoal will need to track the number of times it has been completed, the target number of times the user is striving for, and the bonus for achieving that target.
+
+The following is a summary of the attributes needed:
+
+Goal
+_shortName : string
+_description : string
+_points : int
+SimpleGoal
+_isComplete : bool
+EternalGoal
+None needed
+ChecklistGoal
+_amountCompleted : int
+_target : int
+_bonus : int
+In addition to the goal classes, the GoalManager class will need to keep track of the list of goals as well as the players score.
+
+GoalManager
+_goals : List<Goal>
+_score : int
+Evaluate the Design
+Notice that the EternalGoal class does not define any member variables. What is a reason to still have this class, even though it does not define any member variables?
+Define Constructors
+Now that you have defined the classes, including their methods and attributes, the next step is to think about the constructors that will be used to create new instances of these classes. Remember that you can create multiple constructors with different parameters to make it easy to work with your classes.
+
+Remember, that constructors help set up the initial state of the object, so you should consider what data is necessary for that initial state.
+
+What constructors should each class have?
+
+In other words, what parameters should you pass in when creating an object of that type.
+What other work needs to be done to set up these objects?
+
+For example, does the constructor need to run code to perform set up tasks, like creating lists, iterating through variables, etc.
+Guidance from a Mentor
+Remember that constructors often need to account for the attributes that a class has. Some of these may need to be passed in as parameters, but others might be initialized to starting values such as false or 0.
+
+The following constructors are appropriate for these classes:
+
+Goal(name : string, description : string, points : int)
+SimpleGoal(name : string, description : string, points : int) - This should also set the the variables for if it is complete to be false.
+EternalGoal(name : string, description : string, points : int)
+CheckListGoal(name : string, description : string, points : int, target : int, bonus : int) - In addition to the standard attributes, a checklist goal also needs the target and the bonus amounts. Then, it should set the amount completed to begin at 0.
+GoalManager() - Initializes and empty list of goals and sets the player's score to be 0.
+Evaluate the Design
+Why does the SimpleGoal constructor not need a parameter for the _isComplete variable?
+Review the Design
+Take a minute to review your final design.
+
+Are there any classes, methods, or variables, that you do not understand?
+Guidance from a Mentor
+The following is a final class diagram for each of the classes that you can use as a guide as you being writing your code.
+
+Eternal Quest program class diagram
+Conclude
+At this point, you have the design of the classes you will need for this project. If your design is not "perfect," or it needs to change as you begin working on the project, that is just fine! As you learn more details, you will naturally need to adjust your planning. This is why the principles of programming with class are so valuable, because they allow your program to easily change.
+
+At the end of your meeting:
+
+Determine who will be the lead student for the next meeting.
+After the Meeting: Start the code
+After the team activity, each person needs to individually do the the following:
+
+Open the project in VS Code. Create new files that contain the "stubs" or empty code for all the classes, member variables, and functions in your design.
+
+At this point the body of the methods can be empty, except for the necessary return statements.
+Each class should be in its own file and the name of the file should match the class name.
+Make sure that your program can build without errors.
+Commit and push your code to your GitHub repository.
+Submission
+After completing this activity, Return to Canvas to submit two quizzes associated with this activity:
+
+The Evaluate the Design quiz
+The Participation quiz
+Copyright © Brigham Young University-Idaho | All rights reserved
