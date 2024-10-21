@@ -14,3 +14,4 @@ public class Square : Shape
         return _side * _side;
     }
 }
+
