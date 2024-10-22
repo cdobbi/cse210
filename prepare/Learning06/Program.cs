@@ -23,72 +23,71 @@ class Program
 
             Console.WriteLine($"The {color} shape has an area of {area}.");
         }
-
     }
 }
 
-CSE 210: Programming with Classes
-BYU-I logo
-Home
-W1
-W2
-W3
-W4
-W5
-W6
-W7
-Polymorphism Learning Activity
-Overview
-In this activity you will learn and practice the principle of Polymorphism.
+// CSE 210: Programming with Classes
+// BYU-I logo
+// Home
+// W1
+// W2
+// W3
+// W4
+// W5
+// W6
+// W7
+// Polymorphism Learning Activity
+// Overview
+// In this activity you will learn and practice the principle of Polymorphism.
 
-Prepare
-What is Polymorphism?
-Polymorphism is the ability to take on many forms. In programming, this principle is shown when one line of code can have different behavior depending on the context.
+// Prepare
+// What is Polymorphism?
+// Polymorphism is the ability to take on many forms. In programming, this principle is shown when one line of code can have different behavior depending on the context.
 
-Method Overriding
-To see polymorphism in action with objects and inheritance, you first need to learn about method overriding. Method overriding is the ability of a child class to override, or change the behavior of, a method that it inherited from a parent class. The method name stays the same but the behavior, or the code to run is different.
+// Method Overriding
+// To see polymorphism in action with objects and inheritance, you first need to learn about method overriding. Method overriding is the ability of a child class to override, or change the behavior of, a method that it inherited from a parent class. The method name stays the same but the behavior, or the code to run is different.
 
-An Example
-When using inheritance, a derived class can inherit both member variables and methods from a super-class. For example, a payroll system might define an employee that had a name, tax id number, address, and many other attributes. It may also have a method to calculate the pay for that employee.
+// An Example
+// When using inheritance, a derived class can inherit both member variables and methods from a super-class. For example, a payroll system might define an employee that had a name, tax id number, address, and many other attributes. It may also have a method to calculate the pay for that employee.
 
-For a salary employee, perhaps the salary is just returned as shown in this example:
-
-
-// a parent class
-public class Employee
-{
-  private float salary = 100f;
-
-  public float CalculatePay()
-  {
-    return salary;
-  }
-}
-But if the payroll system also has to account for hourly employees that get paid a certain amount of money based on the number of hours they worked. These employees are very similar to the standard employee class, but they need different logic for the CalculatePay method. This could be defined in a child class that overrides the method from the Employee class. To do this, we first mark the method in the base class with the keyword virtual which tells C# that this method is eligible for another class to override it. Then, in the child class, we use the keyword override as shown in this example:
+// For a salary employee, perhaps the salary is just returned as shown in this example:
 
 
-// the parent class showing the "virtual" keyword included
-public class Employee
-{
-  private float salary = 100f;
+// // a parent class
+// public class Employee
+// {
+//   private float salary = 100f;
 
-  public virtual float CalculatePay()
-  {
-    return salary;
-  }
-}
+//   public float CalculatePay()
+//   {
+//     return salary;
+//   }
+// }
+// But if the payroll system also has to account for hourly employees that get paid a certain amount of money based on the number of hours they worked. These employees are very similar to the standard employee class, but they need different logic for the CalculatePay method. This could be defined in a child class that overrides the method from the Employee class. To do this, we first mark the method in the base class with the keyword virtual which tells C# that this method is eligible for another class to override it. Then, in the child class, we use the keyword override as shown in this example:
 
-// a child class
-public class HourlyEmployee : Employee
-{
-  private float rate = 9f;
-  private float hours = 100f;
 
-  public override float CalculatePay()
-  {
-    return rate * hours; // pay is calculated differently
-  }
-}
+// // the parent class showing the "virtual" keyword included
+// public class Employee
+// {
+//   private float salary = 100f;
+
+//   public virtual float CalculatePay()
+//   {
+//     return salary;
+//   }
+// }
+
+// // a child class
+// public class HourlyEmployee : Employee
+// {
+//   private float rate = 9f;
+//   private float hours = 100f;
+
+//   public override float CalculatePay()
+//   {
+//     return rate * hours; // pay is calculated differently
+//   }
+// }
 
 
 // Changing a behavior this way is called method overriding. Different languages have slightly different syntax for overriding methods. In C# you override the method using the keywords virtual and override in the parent and child class methods as shown.
