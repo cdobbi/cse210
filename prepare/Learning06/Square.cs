@@ -1,17 +1,21 @@
 using System;
 
-public class Square : Shape
+namespace Learning06
 {
-    private double _side;
-
-    public Square(string color, double side) : base(color)
+    public class Square : Shape
     {
-        _side = side;
-    }
+        private double _side;
 
-    public override double GetArea()
-    {
-        return _side * _side;
+        public Square(string color, double side) : base(color)
+        {
+            _side = side;
+        }
+
+        public override double GetArea()
+        {
+            return _side * _side;
+        }
     }
 }
+
 

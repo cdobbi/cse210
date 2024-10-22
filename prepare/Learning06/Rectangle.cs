@@ -1,19 +1,22 @@
 using System;
-
-public class Rectangle : Shape
+namespace Learning06
 {
-    private double _length;
-    private double _width;
 
-    public Rectangle(string color, double length, double width) : base(color)
+    public class Rectangle : Shape
     {
-        _length = length;
-        _width = width;
-    }
+        private double _length;
+        private double _width;
 
-    public override double GetArea()
-    {
-        return _length * _width;
+        public Rectangle(string color, double length, double width) : base(color)
+        {
+            _length = length;
+            _width = width;
+        }
+
+        public override double GetArea()
+        {
+            return _length * _width;
+        }
     }
 }
 

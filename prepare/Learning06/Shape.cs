@@ -1,29 +1,28 @@
 using System;
 
-public abstract class Shape
+namespace Learning06
 {
-    private string _color;
 
-    public Shape(string color)
+    public abstract class Shape
     {
-        _color = color;
-    }
+        private string _color;
 
-    public string GetColor()
-    {
-        return _color;
-    }
+        public Shape(string color)
+        {
+            _color = color;
+        }
 
-    public void SetColor(string color)
-    {
-        _color = color;
-    }
+        public string GetColor()
+        {
+            return _color;
+        }
 
-    public virtual double GetArea()
-    {
-        return 0;
-    }
+        public void SetColor(string color)
+        {
+            _color = color;
+        }
 
-    public abstract double GetArea();
+        public abstract double GetArea();
+    }
 }
 
