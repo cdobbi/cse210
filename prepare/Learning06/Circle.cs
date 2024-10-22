@@ -1,17 +1,21 @@
 using System;
 
-public abstract class Circle : Shape
+namespace Learning06
 {
-    private double _radius;
 
-    public Circle(string color double radius) : base(color)
+    public  class Circle : Shape
     {
-        _radius = radius;
-    }
+        private double _radius;
 
-    public override double GetArea()
-    { 
-        return _radius * _radius * Math.PI;
+        public Circle(string color, double radius) : base(color)
+        {
+            _radius = radius;
+        }
+
+        public override double GetArea()
+        {
+            return _radius * _radius * Math.PI;
+        }
     }
 }
 
