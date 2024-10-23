@@ -15,4 +15,3 @@ public class Entry
         Console.WriteLine($"{_date}|{_topic}|{_journalEntry}");
     }
 }
-

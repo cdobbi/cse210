@@ -1,4 +1,4 @@
-// I havce 7 options in my menu, an entry that is not random, a random topic entry with 9 random prompts, added a 'count entries by a given date,' an 'Exit' option to the menu, store entries to a file 'myjournal.txt,' load entries from a file and load entries from a given date, I also added a bit of error checking.
+// I added a count entries by a given date and additinal random topic options. The save, load from filepath, count entries, journal entry, and random topic all work as expected. (I think) My husband helped me a lot with this rewrite but did not do it for me. I refrenced online sources and google a lot. I asked copilot a gazziion questions.
 
 using System;
 public class Program
@@ -6,102 +6,89 @@ public class Program
     {
         Journal journal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
-        string filePath = "myjournal.txt";
+        string filePath = Path.Combine("journal_entries.txt");
         bool running = true;
 
-        Entry newEntry = new Entry("2222-22-22", "Topic", "Some kind of journal entry.");
+        Entry newEntry = new Entry("2222-22-22", "First Entry", "Some kind of journal entry.");
+        Entry newEntry2 = new Entry("2024-09-20", "Another Entry", "Another kind of journal entry.");
+        Entry newEntry3 = new Entry("2024-10-23", "Writing a novel at this point", "Continue writing journal entries, kind of journal entry.");
         journal.AddEntry(newEntry);
+        journal.AddEntry(newEntry2);
+        journal.AddEntry(newEntry3);
         journal.DisplayEntries();
         journal.SaveEntry(filePath);
         journal.LoadFromEntry(filePath);
-        journal.CountEntriesByDate("2024-09-20");
-    
+        journal.CountEntries("2024-10-23");
+
         while (running)
         {
             Console.WriteLine();
             Console.WriteLine("Choose an option from the menu below: ");
             Console.WriteLine("1. New journal entry");
             Console.WriteLine("2. Random topic journal entry");
-            Console.WriteLine("3. Display journal entry");
-            Console.WriteLine("4. Save journal entry");
-            Console.WriteLine("5. Load journal entries");
-            Console.WriteLine("6. Count entries by a given date");
+            Console.WriteLine("3. Save journal entries");
+            Console.WriteLine("4. Load journal entries");
+            Console.WriteLine("5. Display journal entry");
+            Console.WriteLine("6. Count entries");
             Console.WriteLine("7. Exit");
             Console.WriteLine();
             Console.Write("Choose an option: ");
             string choice = Console.ReadLine();
 
-            if (choice == "1")
+            switch (choice)
             {
-                Console.WriteLine();
-                Console.Write("Enter today's date (YYYY-MM-DD): ");
-                string _date = Console.ReadLine();
-                Console.Write("Topic of journal entry: ");
-                string _topic = Console.ReadLine();
-                Console.Write("Write your journal entry: ");
-                string _journalEntry = Console.ReadLine();
-                Entry newJournalEntry = new Entry(_date, _topic, _journalEntry);
-                journal.AddEntry(newJournalEntry);
-                journal.SaveEntry(filePath);
-                Console.WriteLine("Journal entry saved.");
+                case "1":
+                    Console.WriteLine();
+                    Console.Write("Enter today's date (YYYY-MM-DD): ");
+                    string _date = Console.ReadLine();
+                    Console.Write("Topic of journal entry: ");
+                    string _topic = Console.ReadLine();
+                    Console.Write("Write your journal entry: ");
+                    string _journalEntry = Console.ReadLine();
+                    Entry newJournalEntry = new Entry(_date, _topic, _journalEntry);
+                    journal.AddEntry(newJournalEntry);
+                    journal.SaveEntry(filePath);
+                    Console.WriteLine("Journal entry saved.");
+                    break;
+                case "2":
+                    string randomTopic = promptGenerator.GetRandomPrompt();
+                    Console.WriteLine($"Random topic: {randomTopic}");
+                    Console.Write("Enter the journal entry: ");
+                    string randomEntryText = Console.ReadLine();
+                    Entry randomEntry = new Entry(DateTime.Now.ToString("yyyy-MM-dd"), randomTopic, randomEntryText);
+                    journal.AddEntry(randomEntry);
+                    journal.SaveEntry(filePath);
+                    Console.WriteLine("Journal entry saved.");
+                    break;
+                case "3":
+                    journal.DisplayEntries();
+                    Console.WriteLine("Journal entries saved.");
+                    break;
+                case "4":
+                    journal.LoadFromEntry(filePath);
+                    break;
+
+                case "5":
+                    journal.DisplayEntries();
+                    break;
+
+                case "6":
+                    Console.Write("Enter the date (yyyy-mm-dd): ");
+                    string countDate = Console.ReadLine();
+                    int count = journal.CountEntries(countDate);
+                    Console.WriteLine($"Number of entries on {countDate}: {count}");
+                    break;
+                case "7":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
             }
-            else if (choice == "2")
-            {
-                Console.WriteLine();
-                Console.Write("Enter today's date (YYYY-MM-DD): ");
-                string _date = Console.ReadLine();
-                string _prompt = promptGenerator.GetRandomPrompt();
-                Console.WriteLine($"Prompt: {_prompt} ");
-                Console.Write("Write your journal entry: ");
-                string _journalEntry = Console.ReadLine();
-                Entry newRandomEntry = new Entry(_date, _prompt, _journalEntry);
-                journal.AddEntry(newRandomEntry);
-                journal.SaveEntry(filePath);
-                Console.WriteLine("Entry saved.");
-            }
-            else if (choice == "3")
-            {
-                journal.DisplayEntries();
-                Console.WriteLine();
-            }
-            else if (choice == "4")
-            {
-                Console.WriteLine();
-                Console.Write("Enter file path to save journal entries to: ");
-                string savePath = Console.ReadLine();
-                journal.SaveEntry(savePath);
-                Console.WriteLine("Journal entries saved.");
-            }
-            else if (choice == "5")
-            {
-                Console.WriteLine();
-                Console.Write("Enter file path to load journal entries from: ");
-                string loadPath = Console.ReadLine();
-                journal.LoadFromEntry(loadPath);
-                Console.WriteLine();
-            }
-            else if (choice == "6")
-            {
-                Console.WriteLine();
-                Console.Write("Enter the date to count entries (YYYY-MM-DD): ");
-                string _date = Console.ReadLine();
-                int count = journal.CountEntriesByDate(_date);
-                Console.WriteLine($"Number of entries on {_date}: {count}");
-            }
-            else if (choice == "7")
-            {
-                Console.WriteLine();
-                Console.WriteLine("Goodbye!");
-                running = false;
-            }
-            else
-            {
-                Console.WriteLine();
-                Console.WriteLine("Invalid option. Please try again.");
-            }
-       }
+        }
     }
 }
+
 
 
 // CSE 210: Programming with Classes
