@@ -1,3 +1,7 @@
+// This assignment has taken me about 25-30 hours and it's buggy. I had to utilize other resources to have it explained in a different way as well as receiving guidance from my husband.
+
+//This program has a bug with the target date, retaining points and bonus points after each visit, you MUST load the goals before it will list them and I don't know how to get it to save to a txt file. It will only load the goals from each session.
+
 using System;
 
 class Program
