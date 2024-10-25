@@ -1,16 +1,4 @@
 CSE 210: Programming with Classes
-BYU-I logo
-Home
-W1
-W2
-W3
-W4
-W5
-W6
-W7
-Polymorphism - Design Activity
-Overview
-Meet with your team and prepare a design for this week's programming assignment.
 
 Regarding "Guidance from a Mentor"
 Remember that throughout the activity, you'll receive Guidance from a Mentor. You should first answer the questions as a team, then, refer to the Guidance from a Mentor section to make sure you are on a good path.
@@ -161,34 +149,3 @@ SimpleGoal(name : string, description : string, points : int) - This should also
 EternalGoal(name : string, description : string, points : int)
 CheckListGoal(name : string, description : string, points : int, target : int, bonus : int) - In addition to the standard attributes, a checklist goal also needs the target and the bonus amounts. Then, it should set the amount completed to begin at 0.
 GoalManager() - Initializes and empty list of goals and sets the player's score to be 0.
-Evaluate the Design
-Why does the SimpleGoal constructor not need a parameter for the _isComplete variable?
-Review the Design
-Take a minute to review your final design.
-
-Are there any classes, methods, or variables, that you do not understand?
-Guidance from a Mentor
-The following is a final class diagram for each of the classes that you can use as a guide as you being writing your code.
-
-Eternal Quest program class diagram
-Conclude
-At this point, you have the design of the classes you will need for this project. If your design is not "perfect," or it needs to change as you begin working on the project, that is just fine! As you learn more details, you will naturally need to adjust your planning. This is why the principles of programming with class are so valuable, because they allow your program to easily change.
-
-At the end of your meeting:
-
-Determine who will be the lead student for the next meeting.
-After the Meeting: Start the code
-After the team activity, each person needs to individually do the the following:
-
-Open the project in VS Code. Create new files that contain the "stubs" or empty code for all the classes, member variables, and functions in your design.
-
-At this point the body of the methods can be empty, except for the necessary return statements.
-Each class should be in its own file and the name of the file should match the class name.
-Make sure that your program can build without errors.
-Commit and push your code to your GitHub repository.
-Submission
-After completing this activity, Return to Canvas to submit two quizzes associated with this activity:
-
-The Evaluate the Design quiz
-The Participation quiz
-Copyright © Brigham Young University-Idaho | All rights reserved

@@ -3,15 +3,14 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
-        Console.WriteLine("Hello Develop06 World!");
+    {   //create an instance of the GoalManager class
+        GoalManager goalManager = new GoalManager();
+
+        // Start the application
+        goalManager.Start();
     }
 }
 
-
-// Specification
-// Write an Eternal Quest program to track various kinds of goals.
-// Your program can include whatever kinds of "gamification" components you like, but each program should have the following base functionality.
 // Functional requirements
 // Your program must do the following:
 
@@ -21,7 +20,7 @@ class Program
 // For example, every time you read your scriptures you get 100 points.
 // Provide for a checklist goal that must be accomplished a certain number of times to be complete. Each time the user records this goal they gain some value, but when they achieve the desired amount, they get an extra bonus.
 // For example, if you set a goal to attend the temple 10 times, you might get 50 points each time you go, and then a bonus of 500 points on the 10th time.
-// Display the user's score.
+// GetDetailsString the user's score.
 // Allow the user to create new goals of any type.
 // Allow the user to record an event (meaning they have accomplished a goal and should receive points).
 // Show a list of the goals. This list should show indicate whether the goal has been completed or not (for example [ ] compared to [X]), and for checklist goals it should show how many times the goal has been completed (for example Completed 2/5 times).
