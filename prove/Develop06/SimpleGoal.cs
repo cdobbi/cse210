@@ -45,3 +45,4 @@ public class SimpleGoal : Goal // Ensure the SimpleGoal class inherits from the 
         }
     }
 }
+

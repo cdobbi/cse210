@@ -218,6 +218,7 @@ public class GoalManager
     }
 }
 
+
 // In addition to these behaviors for the goals, the goal manager class will need behaviors related to the menu system such as the following:
 
 // Start - This is the "main" function for this class. It is called by Program.cs, and then runs the menu loop.

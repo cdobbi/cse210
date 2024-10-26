@@ -61,8 +61,6 @@ public class CheckListGoal : Goal
   
 }
 
-
-
 // ChecklistGoal
 // RecordEvent() : void (Override)
 // IsComplete() : bool (Override)

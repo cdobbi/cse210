@@ -25,7 +25,6 @@ public abstract class Goal
     public abstract string GetStringRepresentation();
 }
 
-
 // Goal
 // RecordEvent() : void (Abstract)
 // IsComplete() : bool (Abstract)
