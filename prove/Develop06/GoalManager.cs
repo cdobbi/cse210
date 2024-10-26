@@ -22,7 +22,7 @@ public class GoalManager
             Console.WriteLine();
             Console.WriteLine("Goal Menu Options: ");
             Console.WriteLine("1. Create New Goal");
-            Console.WriteLine("2. List Goals");
+            Console.WriteLine("2. List Goals (save and load goals before listing them.");
             Console.WriteLine("3. Save Goals");
             Console.WriteLine("4. Load Goals");
             Console.WriteLine("5. Record Completed Goals");
@@ -57,9 +57,10 @@ public class GoalManager
         }
     }
     
+    
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"Player score: {_score}");
+        Console.WriteLine($"Players points: {_score}");
     }
 
     public void CreateNewGoal()
@@ -69,16 +70,19 @@ public class GoalManager
         string type = Console.ReadLine();
         Console.Write("Enter a very short goal name: ");
         string name = Console.ReadLine();
-        Console.Write("Enter goal description: ");
+        Console.Write("Goal description: ");
         string description = Console.ReadLine();
-        Console.Write("How many points is this goal worth to you? ");
-        int points = int.Parse(Console.ReadLine());
-
+        Console.Write("How many points is this goal worth? ");
+        if (!int.TryParse(Console.ReadLine(), out int points))
+        {
+            Console.WriteLine("Invalid input for points. Enter a valid integer.");
+            return;
+        }
         Goal newGoal = null;
         switch (type)
         {
             case "1":
-                newGoal = new SimpleGoal(name, description, points);
+                newGoal = new SimpleGoal(name, description, points, false);
                 break;
             case "2":
                 Console.Write("Enter goal target-completion date(int format): ");
@@ -95,19 +99,40 @@ public class GoalManager
                 }
                 newGoal = new CheckListGoal(name, description, points, target, bonus);
                 break;
+            case "3":
+                newGoal = new EternalGoal(name, description, points);
+                break;
             default:
                 Console.WriteLine("Invalid goal type.");
                 return;
-            }
-            _goals.Add(newGoal);
-            Console.WriteLine("Goal created successfully!");
         }
+            _goals.Add(newGoal);
+            Console.WriteLine("Goal created successfully!\n");
+            Console.WriteLine($"You have {_score} points.");
+    }
     
     public void ListGoals()
     {
+        Console.WriteLine("The goals are:");
+        int index = 1;
         foreach (var goal in _goals)
         {
-            Console.WriteLine(goal.GetDetailsString());
+            if (goal is SimpleGoal simpleGoal)
+            {
+                string status = simpleGoal.IsComplete() ? "[X]" : "[ ]";
+                Console.WriteLine($"{index}. {status} {simpleGoal.GetDetailsString()}");
+            }
+            else if (goal is EternalGoal eternalGoal)
+            {
+                string status = "[ ]";
+                Console.WriteLine($"{index}. {status} {eternalGoal.GetDetailsString()}");
+            }
+            else if (goal is CheckListGoal checkListGoal)
+            {
+                Console.WriteLine($"{index}. {checkListGoal.GetDetailsString()}");
+            }
+            index++;
+            Console.WriteLine($"You have {_score} points.");
         }
     }
 
@@ -121,7 +146,8 @@ public class GoalManager
                 writer.WriteLine(goal.GetStringRepresentation());
             }
         }
-        Console.WriteLine("Goals saved successfully!");
+        Console.WriteLine("Goals saved successfully!\n");
+        Console.WriteLine($"You have {_score} points.");
     }
 
     public void LoadGoals(string filePath)
@@ -138,7 +164,7 @@ public class GoalManager
                     string[] parts = line.Split('|');
                     if (parts.Length == 4)
                     {
-                        Goal goal = new SimpleGoal(parts[0], parts[1], int.Parse(parts[2]));
+                        Goal goal = new SimpleGoal(parts[0], parts[1], int.Parse(parts[2]), bool.Parse(parts[3]));
                         _goals.Add(goal);
                     }
                     else if (parts.Length == 6)
@@ -153,7 +179,9 @@ public class GoalManager
                     }
                 }
             }
-            Console.WriteLine("Goals loaded successfully!");
+            Console.WriteLine("Goals loaded successfully!\n");
+            Console.WriteLine($"You have {_score} points.");
+
         }
         else
         {
@@ -168,10 +196,21 @@ public class GoalManager
         Goal goal = _goals.Find(g => g.GetDetailsString().Contains(name));
         if (goal != null)
         {
-            goal.RecordEvent();
-            _score += goal.GetPoints();
-            Console.WriteLine("Event recorded!");
+            if (goal is SimpleGoal simpleGoal)
+            {
+                simpleGoal.CheckOff();
+                _score += goal.GetPoints();
+            }
+            else
+            {
+                goal.RecordEvent();
+                _score += goal.GetPoints();
+            }
+            Console.WriteLine("Event recorded!\n");
+            Console.WriteLine($"You have {_score} points.");
+
         }
+        
         else
         {
             Console.WriteLine($"I couldn't find the goal you're referring to: {name}");

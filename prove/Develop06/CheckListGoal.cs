@@ -30,10 +30,28 @@ public class CheckListGoal : Goal
     {
         return _amountCompleted >= _target;
     }
+
     public override string GetDetailsString()
-    //This method should return a string representation of the goal's details, including the amount completed and the target.
+{
+    string checkboxes = "";
+    for (int i = 0; i < _target; i++)
     {
-        return $"{_shortName}: {_description} - {_points} points - Completed: {_amountCompleted}/{_target} - Bonus: {_bonus}";
+        checkboxes += i < _amountCompleted ? "[X] " : "[ ] ";
+    }
+    return $"{_shortName}: {_description} - {_points} points - {checkboxes} - Completed: {_amountCompleted}/{_target} - Bonus: {_bonus}";
+}
+
+    public void MarkItemCompleted()
+    {
+        if (_amountCompleted < _target)
+        {
+            _amountCompleted++;
+            Console.WriteLine($"Marked {_shortName} as completed. {_amountCompleted}/{_target}");
+        }
+        else
+        {
+            Console.WriteLine($"{_shortName} has already been completed {_amountCompleted} times.");
+        }
     }
     public override string GetStringRepresentation()
     //This method should return a string representation of the goal, suitable for saving to a file.
@@ -42,7 +60,6 @@ public class CheckListGoal : Goal
     }
   
 }
-
 
 
 
