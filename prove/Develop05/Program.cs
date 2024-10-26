@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+// For extra credit, I included many additional prompts on reflection and listing. I attempted to get the list to not repeat but couldn't finish with what time I had so the attempt is commented out.
 public class Program
 {
     static void Main(string[] args)
@@ -47,30 +48,46 @@ public class Program
                 case "2":
                     ReflectingActivity reflectingActivity = new ReflectingActivity(
                         "Reflecting Exercise",
-                        "This activity will take you through a series of prompts for you to reflect on.",
+                        "This activity will take you through a series of prompts for you to think about (no input is required, just reflect.",
                         0,
                         new List<string>
                         {
                             "Think of a time you were brave.",
+                            "What memory brings you peace?",
                             "Think of a time when you stood up for someone else.",
+                            "When is a time your had to be strong?",
                             "Think of a time when you did something really difficult.",
+                            "When is a time you had to thing outside of the box?",
                             "Think of a time you showed real grit.",
+                            "Think of a time when you helped someone in need.",
                             "Think of a time when you were particularly helpful.",
+                            "When were you particularly resourceful?",
                             "Think of a time when you did something selfless.",
-                            "Think of a time that brought you joy. "
+                            "When is a time you showed real courage?",
+                            "Think of a time that brought you joy.",
+                            "When did you shine above the rest?",
+                            "What memory brings you peace?",
+                            
                         },
                         new List<string>
                         {   
-                            "Is this something you do often and to what benefit?",
+                            "Is this something you did often?",
                             "Why was this experience meaningful to you?",
-                            "At that time, had you ever done anything like it before?",
-                            "What made you do this?",
-                            "How did this make you feel?",
+                            "Had you ever done anything like it before?",
+                            "What made you do it?",
+                            "How did it make you feel?",
                             "What made this time different than other times?",
+                            "Did it change you in any way?",
+                            "In what way did it change you?",
                             "What's your favorite thing about this experience?",
-                            "What was learned from this?",
+                            "Would you do it again?",
+                            "How can you keep this experience in mind in the future?",
+                            "Did it effect others or just you?",
+                            "Can you apply it to other situations?",
                             "Does this apply to or effect your life right now?",
+                            "Would you di it again?",
                             "What did you learn about yourself through this experience?",
+                            "What did others learn about you through this experience?",
                             "Is this something you would repeat and why?",
                         }
                     );
@@ -86,10 +103,22 @@ public class Program
                     new List<string>
                     {
                         "Who are people you appreciate? ",
+                        "What are your personal strenths?",
                         "What are personal strengths of yours? ",
+                        "Who are your heros?",
                         "In what ways would you like to improve? ",
+                        "What sets ou apart from others?",
                         "How many ways can you show gratitude? ",
-                        "What blessing did you have yesterday? "
+                        "How can you do better this week?",
+                        "Who are people you have helped this week? ",
+                        "When have you felt the Holy Ghost recently?",
+                        "What blessing did you have yesterday?",
+                        "List 10 things you are grateful for.",
+                        "What are your goals for the week?",
+                        "What are your goals for the month?",
+                        "What are your goals for the year?",
+                        "What are your goals for the next 5 years?",
+
                     }
                 );
                     listingActivity.Run();
