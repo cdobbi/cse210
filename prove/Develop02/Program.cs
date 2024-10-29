@@ -6,19 +6,12 @@ public class Program
     {
         Journal journal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
-        string filePath = Path.Combine("journal_entries.txt");
-        bool running = true;
+        // journal.DisplayEntries();
+        // journal.SaveEntries();
+        journal.LoadEntries();
+        Console.WriteLine($"Total entries: {journal.CountTotalEntries()}");
 
-        Entry newEntry = new Entry("2222-22-22", "First Entry", "Some kind of journal entry.");
-        Entry newEntry2 = new Entry("2024-09-20", "Another Entry", "Another kind of journal entry.");
-        Entry newEntry3 = new Entry("2024-10-23", "Writing a novel at this point", "Continue writing journal entries, kind of journal entry.");
-        journal.AddEntry(newEntry);
-        journal.AddEntry(newEntry2);
-        journal.AddEntry(newEntry3);
-        journal.DisplayEntries();
-        journal.SaveEntry(filePath);
-        journal.LoadFromEntry(filePath);
-        journal.CountEntries("2024-10-23");
+        bool running = true;
 
         while (running)
         {
@@ -29,7 +22,7 @@ public class Program
             Console.WriteLine("3. Save journal entries");
             Console.WriteLine("4. Load journal entries");
             Console.WriteLine("5. Display journal entry");
-            Console.WriteLine("6. Count entries");
+            Console.WriteLine("6. Total entry count");
             Console.WriteLine("7. Exit");
             Console.WriteLine();
             Console.Write("Choose an option: ");
@@ -39,33 +32,34 @@ public class Program
             {
                 case "1":
                     Console.WriteLine();
-                    Console.Write("Enter today's date (YYYY-MM-DD): ");
+                    Console.Write("Today's date (YYYY-MM-DD): ");
                     string _date = Console.ReadLine();
-                    Console.Write("Topic of journal entry: ");
+                    Console.Write("Topic: ");
                     string _topic = Console.ReadLine();
-                    Console.Write("Write your journal entry: ");
+                    Console.Write("Entry: ");
                     string _journalEntry = Console.ReadLine();
                     Entry newJournalEntry = new Entry(_date, _topic, _journalEntry);
                     journal.AddEntry(newJournalEntry);
-                    journal.SaveEntry(filePath);
-                    Console.WriteLine("Journal entry saved.");
+                    journal.SaveEntries();
+                    Console.WriteLine("Entry saved.");
                     break;
                 case "2":
                     string randomTopic = promptGenerator.GetRandomPrompt();
                     Console.WriteLine($"Random topic: {randomTopic}");
-                    Console.Write("Enter the journal entry: ");
+                    Console.Write("Entry: ");
                     string randomEntryText = Console.ReadLine();
                     Entry randomEntry = new Entry(DateTime.Now.ToString("yyyy-MM-dd"), randomTopic, randomEntryText);
                     journal.AddEntry(randomEntry);
-                    journal.SaveEntry(filePath);
-                    Console.WriteLine("Journal entry saved.");
+                    journal.SaveEntries();
+                    Console.WriteLine("Entry saved.");
                     break;
                 case "3":
                     journal.DisplayEntries();
-                    Console.WriteLine("Journal entries saved.");
+                    Console.WriteLine("Entries saved.");
                     break;
                 case "4":
-                    journal.LoadFromEntry(filePath);
+                    journal.LoadEntries();
+                    Console.WriteLine("Entries loaded! What would you like to do next?");
                     break;
 
                 case "5":
@@ -73,10 +67,8 @@ public class Program
                     break;
 
                 case "6":
-                    Console.Write("Enter the date (yyyy-mm-dd): ");
-                    string countDate = Console.ReadLine();
-                    int count = journal.CountEntries(countDate);
-                    Console.WriteLine($"Number of entries on {countDate}: {count}");
+                    int totalEntries = journal.CountTotalEntries();
+                    Console.WriteLine($"Total number of entries: {totalEntries}");
                     break;
                 case "7":
                     running = false;

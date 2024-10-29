@@ -5,9 +5,18 @@ using System.IO;
 public class Journal
 {
     private List<Entry> entries = new List<Entry>();
-    public void AddEntry(Entry newEntry)
+    private string filePath = "myjournal.txt";
+
+    public Journal()
     {
-        entries.Add(newEntry);
+        if (File.Exists(filePath))
+        {
+            LoadEntries();
+        }
+    }    
+    public void AddEntry(Entry entry)
+    {
+        entries.Add(entry);
     }
     public void DisplayEntries()
     {
@@ -16,66 +25,50 @@ public class Journal
             newEntry.Display();
         }
     }
-    public void SaveEntry(string filePath)
+    public void SaveEntries()
     {
         using (StreamWriter writer = new StreamWriter(filePath))
         {
-            foreach (var newEntry in entries)
+            foreach (var entry in entries)
             {
-
-                writer.WriteLine($"{newEntry._date}|{newEntry._topic}|{newEntry._journalEntry}");
+                writer.WriteLine($"{entry._date}|{entry._topic}|{entry._journalEntry}");
             }
         }
     }
-    public void LoadFromEntry(string filePath)
+    public void LoadEntries()
     {
-        if (File.Exists(filePath))
+        entries.Clear();
+        using (StreamReader reader = new StreamReader(filePath))
         {
-            entries.Clear();
-            using (StreamReader reader = new StreamReader(filePath))
+            string line;
+            while ((line = reader.ReadLine()) != null)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                string[] categories = line.Split("|");
+                if (categories.Length == 3)
                 {
-                    string[] categories = line.Split("|");
-                    if (categories.Length == 3)
-                    {
-                        Entry newEntry = new Entry(categories[0], categories[1], categories[2]);
-                        entries.Add(newEntry);
-                        // Console.WriteLine($"Loaded entry: {newEntry._date}|{newEntry._topic}|{newEntry._journalEntry}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid entry format");
-                    }
+                    Entry newEntry = new Entry(categories[0], categories[1], categories[2]);
+                    entries.Add(newEntry);
+                    // Console.WriteLine($"Loaded entry: {newEntry._date}|{newEntry._topic}|{newEntry._journalEntry}");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid entry format");
                 }
             }
-
-            Console.WriteLine($"{entries.Count} entries retrieved successfully.");
         }
-        else
-        {
-            Console.WriteLine("File not found.");
-        }
-
+        // Console.WriteLine($"{entries.Count} entries retrieved successfully.");
     }
-
-    public int CountEntries(string date)
+    public int CountTotalEntries()
     {
-        int count = 0;
-        foreach (Entry entry in entries)
-        {
-            {
-                count++;
-            }
-        }
-
-        if (count == 0)
-        {
-            Console.WriteLine();
-        }
-
-        return count;
+        // int count = 0;
+        // foreach (var entry in entries)
+        // {
+        //     if (entry._date == date)
+        //     {
+        //         count++;
+        //     }
+        // }
+        return entries.Count;
     }
 }
 
