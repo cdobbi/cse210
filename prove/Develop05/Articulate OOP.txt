@@ -1,0 +1,33 @@
+Programming with classes (OOP) is similar to the skeletal system of a rabbit (class program). It provides the blueprint, structure and support to the rest of the program or rabbit. The concepts of OOP are Abstraction, Encapsulation, Inheritance, and Polymorphism. Abstraction involves hiding the details of a parent or base program in other subdirectories or child files and only showing the necessary features of the objects in the base file. This is similar to the outside of the rabbit, what we see. Inheritance is the systems or attributes of Rabbit that are common to all rabbits, what a child rabbit or child file would inherit from the parent program. These would be in initiated in a RabbitManager file. Such as (public void Breathe()){}), (public double Kindle(){}). Encapsulation would be the methods and attributes bundled within the child files that are appropriately related and unique to that class. All rabbits have a coat of fur, but they have different types of fur, length, color, some even change color in the summer and again in the winter. This changing would be like Polymorphism. The differences would be programmed in the child class to override the parent class for that attribute or even become a new breed of rabbit, something entirely new. Programming with classes makes managing and building complex programs more organized, protects the code from being changed or broken. If it does break, the separation in the classes make it much easier to locate the issue and fix it.  It also promotes reusability, It's more efficient.
+
+public class Rabbit
+{ public string Name { get;  set; }
+public Rabbit(string name)
+{ Name = name;}
+public virtual void Breathe()
+{ Console.WriteLine($"{Name} is breathing."(;}
+public virtual void ChangeFurColor(string season)
+{ if (season == "summer"){Console.WriteLine(${Name)'s fur bleaches out in the summer.");
+else if (season == "winter"){ Console.WriteLine($"{Name} turns white in the winter. The shorter days signal the coat to turn white in order to blend into the snow.");
+}}}
+
+public class RabbitManager : Rabbit
+{ private List<Hair> Coat { get; set;}
+public RabbitManager(string name) : base(name) 
+{ Coat = new List <Hair>();}
+public void AddHair(stirng type, changeColor)
+{ coat.Add(new Hair(type, changeColor));}
+public override void ChangeFurColor(string season) etc.
+
+public class Hair
+{ public string Type { get; set;}
+public Hair(string type, string changeColor)
+{Type = type; ChangeColor = changeColor;}
+
+public class Program
+{ public static void Main()
+{ RabbitManager my Rabbit = new RabbitManager("Wild Snow Show Rabbit, 2 Agouti);
+myRabbit.AddHair("Fur", 2.5);
+myRabbit.Breathe();
+myRabbit.ChangeFurColor("winter");
+}}
