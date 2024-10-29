@@ -2,6 +2,7 @@
 
 //This program has a bug with the target date, retaining points and bonus points after each visit, you MUST load the goals before it will list them and I don't know how to get it to save to a txt file. It will only load the goals from each session.
 
+
 using System;
 
 class Program
@@ -14,7 +15,6 @@ class Program
         goalManager.Start();
     }
 }
-
 // Functional requirements
 // Your program must do the following:
 
